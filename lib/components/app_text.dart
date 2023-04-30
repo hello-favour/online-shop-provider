@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 
-class AppFont extends StatelessWidget {
+class AppText extends StatelessWidget {
   final String text;
   final Color color;
   final double size;
   final FontWeight fontWeight;
-  const AppFont({
+  const AppText({
     super.key,
     required this.text,
     required this.color,

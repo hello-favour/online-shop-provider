@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop_app/components/app_theme.dart';
-import 'package:online_shop_app/components/app_font.dart';
 import 'package:online_shop_app/components/bottom_nav.dart';
+import 'package:online_shop_app/screens.dart/cart_page.dart';
+import 'package:online_shop_app/screens.dart/home_page.dart';
+import 'package:online_shop_app/screens.dart/profile_page.dart';
+import 'package:online_shop_app/screens.dart/search_page.dart';
 
 class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+  MainScreen({super.key});
+  List<Widget> pageList = const [
+    HomePage(),
+    SearchPage(),
+    HomePage(),
+    CartPage(),
+    ProfilePage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
+    int pageIndex = 1;
     return Scaffold(
       backgroundColor: AppTheme.bgrdColor,
+      body: pageList[pageIndex],
       bottomNavigationBar: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(AppTheme.bottomNavPadding),
@@ -46,14 +58,6 @@ class MainScreen extends StatelessWidget {
               ],
             ),
           ),
-        ),
-      ),
-      body: const Center(
-        child: AppFont(
-          text: "MainScreen",
-          color: Colors.black,
-          size: AppTheme.fontSize,
-          fontWeight: FontWeight.bold,
         ),
       ),
     );
