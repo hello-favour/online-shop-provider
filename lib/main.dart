@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Online Shop',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        fontFamily: "Inter",
       ),
       home: const MainScreen(),
     );
