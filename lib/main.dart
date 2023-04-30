@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:online_shop_app/controllers/mainscreen_provider.dart';
 import 'package:online_shop_app/main_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,12 +12,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Online Shop',
-      theme: ThemeData(
-        fontFamily: "Inter",
+    final state = Provider.of<MainScreenNotifier>(context);
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) {
+            MainScreenNotifier();
+          },
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Online Shop',
+        theme: ThemeData(
+          fontFamily: "Inter",
+        ),
+        home: MainScreen(),
       ),
-      home: MainScreen(),
     );
   }
 }
