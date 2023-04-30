@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop_app/components/app_theme.dart';
 import 'package:online_shop_app/components/bottom_nav.dart';
+import 'package:online_shop_app/components/bottom_nav_bar.dart';
 import 'package:online_shop_app/controllers/mainscreen_provider.dart';
 import 'package:online_shop_app/screens.dart/cart_page.dart';
 import 'package:online_shop_app/screens.dart/home_page.dart';
@@ -20,59 +21,11 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MainScreenNotifier>(builder: (context, state, child) {
-      return Scaffold(
-        backgroundColor: AppTheme.bgrdColor,
-        body: pageList[state.pageIndex],
-        bottomNavigationBar: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(AppTheme.bottomNavPadding),
-            child: Container(
-              padding: const EdgeInsets.all(12),
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              decoration: const BoxDecoration(
-                color: Colors.black,
-                borderRadius: AppTheme.appRadius,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  BottomNavWidget(
-                    icon: Icons.home,
-                    onTap: () {
-                      state.pageIndex = 0;
-                    },
-                  ),
-                  BottomNavWidget(
-                    icon: Icons.search,
-                    onTap: () {
-                      state.pageIndex = 1;
-                    },
-                  ),
-                  BottomNavWidget(
-                    icon: Icons.add,
-                    onTap: () {
-                      state.pageIndex = 2;
-                    },
-                  ),
-                  BottomNavWidget(
-                    icon: Icons.shopping_cart,
-                    onTap: () {
-                      state.pageIndex = 3;
-                    },
-                  ),
-                  BottomNavWidget(
-                    icon: Icons.person,
-                    onTap: () {
-                      state.pageIndex = 4;
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      );
-    });
+    final state = Provider.of<MainScreenNotifier>(context);
+    return Scaffold(
+      backgroundColor: AppTheme.bgrdColor,
+      body: pageList[state.pageIndex],
+      bottomNavigationBar: BottomNavBar(state: state),
+    );
   }
 }

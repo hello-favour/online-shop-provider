@@ -12,22 +12,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = Provider.of<MainScreenNotifier>(context);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) {
-            MainScreenNotifier();
+          create: (_) {
+            return MainScreenNotifier();
           },
         ),
       ],
-      child: MaterialApp(
-        title: 'Online Shop',
-        theme: ThemeData(
-          fontFamily: "Inter",
-        ),
-        home: MainScreen(),
-      ),
+      builder: (context, child) {
+        return MaterialApp(
+          title: 'Online Shop',
+          theme: ThemeData(
+            fontFamily: "Inter",
+          ),
+          home: MainScreen(),
+        );
+      },
     );
   }
 }
