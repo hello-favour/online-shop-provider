@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop_app/controllers/mainscreen_provider.dart';
 import 'package:online_shop_app/main_screen.dart';
+import 'package:online_shop_app/screens.dart/product_bycart.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             fontFamily: "Inter",
           ),
-          home: MainScreen(),
+          home: const ProductByCart(),
         );
       },
     );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop_app/components/app_text.dart';
 import 'package:online_shop_app/components/app_theme.dart';
+import 'package:online_shop_app/components/home_widget.dart';
+import 'package:online_shop_app/screens.dart/constants/image_path.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,6 +17,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppTheme.bgrdColor,
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: Stack(
@@ -38,6 +41,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     fontWeight: FontWeight.bold,
                   ),
                   TabBar(
+                    padding: EdgeInsets.zero,
                     labelColor: Colors.black,
                     indicatorSize: TabBarIndicatorSize.label,
                     indicatorColor: Colors.transparent,
@@ -67,34 +71,34 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             Padding(
               padding: EdgeInsets.only(
                   top: MediaQuery.of(context).size.height * 0.265),
-              child: TabBarView(
-                controller: _tabController,
-                children: [
-                  Column(
-                    children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.405,
-                        color: Colors.amber,
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.405,
-                        color: Colors.green,
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.405,
-                        color: Colors.amber,
-                      ),
-                    ],
-                  ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.only(left: 12),
+                child: TabBarView(
+                  controller: _tabController,
+                  children: const [
+                    HomeWidget(
+                      category: 'Men Shoes',
+                      name: "UltraBoost Shoe",
+                      image: "assets/images/shoe 4.png",
+                      id: "1",
+                      price: "\$2000",
+                    ),
+                    HomeWidget(
+                      category: 'Women Shoes',
+                      name: "Originals NMD R1",
+                      image: ImagePath.shoe2,
+                      id: "2",
+                      price: "\$5000",
+                    ),
+                    HomeWidget(
+                      category: 'kids Shoes',
+                      name: "Original Adidas Shoe",
+                      image: ImagePath.shoe1,
+                      id: "3",
+                      price: "\$4000",
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
